@@ -11,13 +11,15 @@ screen.bgcolor("black")
 screen.title("Mariya's Breakout")
 screen.setup(width=950, height=700)
 paddle = Paddle((0, -300))
+
 ball = Ball()
 lives = Lives()
 score = Score()
 
+
+screen.onkeypress(paddle.go_left, "Left")
+screen.onkeypress(paddle.go_right, "Right")
 screen.listen()
-screen.onkey(paddle.go_left, "Left")
-screen.onkey(paddle.go_right, "Right")
 
 brick = Brick(x_cor=0, y_cor=0)
 brick.hideturtle()
@@ -43,7 +45,8 @@ def paddle_collision():
 
 def brick_collision():
     for b in brick.bricks:
-        if ball.distance(b) < 20:
+        if ball.distance(b) < 30:
+            brick.bricks.remove(b)
             b.hideturtle()
             score.point()
 

@@ -1,5 +1,5 @@
 from turtle import Turtle
-
+import random
 
 class Ball(Turtle):
 
@@ -19,13 +19,14 @@ class Ball(Turtle):
         new_y = self.ycor() - self.y_move
         self.goto(new_x, new_y)
 
+
     def bounce(self):
         self.y_move *= -1
-        self.move_speed *= 0.5
+        self.move_speed *= 0.9
 
     def wall_bounce(self):
         self.x_move *= -1
-        self.move_speed *= 0.5
+        self.move_speed *= 0.9
 
 
     def resset_position(self):
